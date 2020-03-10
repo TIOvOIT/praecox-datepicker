@@ -63,4 +63,4 @@ import Datepicker from 'praecox-datepicker'
 ## License
 
 
-[MIT](https://github.com/Runningzs/praecox-datepicker/blob/master/LICENSE)# praecox-datepicker
+[MIT](https://github.com/Runningzs/praecox-datepicker/blob/master/LICENSE)
