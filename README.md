@@ -6,8 +6,20 @@
 
 使用Svelte编写的日期选择器，简单灵活，支持单选、多选、禁用、标记等功能。
 
+# 预览
 
-
+ 主题<br/>
+ <img alt='主题' src="https://github.com/Runningzs/praecox-datepicker/blob/master/img/1.png" width="100%">
+ 
+ 单选<br/>
+ <img alt='单选' src="https://github.com/Runningzs/praecox-datepicker/blob/master/img/2.png" width="50%">
+ 
+  自由多选<br/>
+ <img alt='自由多选' src="https://github.com/Runningzs/praecox-datepicker/blob/master/img/3.png" width="50%">
+ 
+  范围选择<br/>
+ <img alt='范围选择' src="https://github.com/Runningzs/praecox-datepicker/blob/master/img/4.png" width="50%">
+ 
 # 安装
 
 
