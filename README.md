@@ -6,6 +6,11 @@
 
 使用Svelte编写的日期选择器，简单灵活，支持单选、多选、禁用、标记等功能。
 
+# DOME
+
+[Range picker(范围选择)](https://svelte.dev/repl/e010922893964594a8a888aae1ec4fd5?version=3.19.2)
+[Binding input(与输入框绑定)](https://svelte.dev/repl/e8d7c44de4354c04b5dfcaebc685609e?version=3.19.2)
+
 # 预览
 
  主题<br/>
