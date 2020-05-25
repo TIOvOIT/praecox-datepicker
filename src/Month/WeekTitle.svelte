@@ -6,13 +6,13 @@
 
   const WEEK_NAME = {
     EN: [
-      { id: 1, name: "MON" },
-      { id: 2, name: "TUE" },
-      { id: 3, name: "WED" },
-      { id: 4, name: "THU" },
-      { id: 5, name: "FRI" },
-      { id: 6, name: "SAT" },
-      { id: 7, name: "SUN" }
+      { id: 1, name: "Mon" },
+      { id: 2, name: "Tue" },
+      { id: 3, name: "Wed" },
+      { id: 4, name: "Thu" },
+      { id: 5, name: "Fri" },
+      { id: 6, name: "Sat" },
+      { id: 7, name: "Sun" }
     ],
     ZH: [
       { id: 1, name: "一" },
@@ -27,41 +27,25 @@
 </script>
 
 <style>
-  thead {
-    padding: 0;
-    width: 301px;
-  }
-  tr {
-    padding: 0;
-  }
-  .th_dark,
-  .th_light {
+  th {
+    font-weight: 500;
     display: inline-flex;
     padding: 0;
     height: 30px;
+    margin-bottom: 14px;
     width: 42.8px;
-    line-height: 30px;
+    align-items: center;
     justify-content: center;
-    color: #b1b1b3;
-    cursor: pointer;
     user-select: none;
-  }
-  th {
-    font-weight: 500;
+    font-size: 12px;
   }
 
-  .th_light:hover {
-    background: none;
-    color: #0c0c0d;
+  .th_light {
+    color: #b1b1b3;
   }
 
   .th_dark {
     color: #4a4a4f;
-  }
-  .th_dark:hover {
-    background: none;
-    color: rgb(207, 207, 207);
-    border-radius: 3px;
   }
 </style>
 
@@ -72,4 +56,3 @@
     {/each}
   </tr>
 </thead>
-

@@ -1,27 +1,17 @@
-*组件基于[component-template](https://github.com/sveltejs/component-template)构建*
+# Praecox-datepicker
 
----
+A date picker built with Svelte.Simple and flexible, supporting functions such as single selection, multiple selection, disabling, and marking.
 
-# 简介
+## Screenshot
 
-使用Svelte编写的日期选择器，简单灵活，支持单选、多选、禁用、标记等功能。
+Theme<br/>
+<img alt='theme' src="https://github.com/Runningzs/praecox-datepicker/blob/master/img/1.jpg" width="100%">
 
-# 预览
+## Demo
 
- 主题<br/>
- <img alt='主题' src="https://github.com/Runningzs/praecox-datepicker/blob/master/img/1.png" width="100%">
- 
- 单选<br/>
- <img alt='单选' src="https://github.com/Runningzs/praecox-datepicker/blob/master/img/2.png" width="50%">
- 
-  自由多选<br/>
- <img alt='自由多选' src="https://github.com/Runningzs/praecox-datepicker/blob/master/img/3.png" width="50%">
- 
-  范围选择<br/>
- <img alt='范围选择' src="https://github.com/Runningzs/praecox-datepicker/blob/master/img/4.png" width="50%">
- 
-# 安装
+[Demo](https://svelte.dev/repl/e010922893964594a8a888aae1ec4fd5?version=3.19.2)
 
+## Install
 
 ```bash
 
@@ -29,38 +19,30 @@ npm install --save praecox-datepicker
 
 ```
 
-
-# 使用
-
+## Usage
 
 ```javascript
-
-import Datepicker from 'praecox-datepicker'
-
+import Datepicker from "praecox-datepicker";
 ```
 
 ```html
-
-<Datepicker/>
-
+<Datepicker />
 ```
 
+## Props
 
-## API
-
-
-|       API       	| 类型         	| 参数                                                                  	| 描述                                                                                                                                       	|
-|:---------------:	|--------------	|-----------------------------------------------------------------------	|--------------------------------------------------------------------------------------------------------------------------------------------	|
-| nowDate         	| DateObject   	|                                                                       	| 当前日期                                                                                                                                   	|
-| i18n            	| String       	| 'EN'、'ZH'                                                            	| 多语言                                                                                                                                     	|
-| theme           	| String       	| 'light'、'dark'                                                       	|                                                                                                                                            	|
-| markDate        	| Array        	| ['2020-3-1','2020-3-2','2020-3-3'...]                                 	| 标记的日期集合                                                                                                                             	|
-| disableDateRule 	| String       	| 'piecemeal'、'range'                                                  	| 禁用规则。'piecemeal'表示零碎的，不连续的；'range'表示为一个范围。                                                                         	|
-| disableDate     	| Array/Object 	| ['2020-3-1','2020-3-2'...] or [{start:"2019-3-27"},{end:"2020-3-27"}] 	| 当disableDateRule为piecemeal时，格式为['2020-3-1','2020-3-2'...] 当disableDateRule为range时，格式为[{start:"2019-3-27"},{end:"2020-3-27"}] 	|
-| pickerRule      	| String       	| 'singleChoice'、'freeChoice'、'rangeChoice'                           	| 选取规则：singleChoice（单选）、freeChoice（自由选择）、rangeChoice(范围选择)                                                              	|
-| pickerResult    	|              	|                                                                       	| 选取结果，请与外部变量绑定来获取结果值                                                                                                     	|
+|      name       | type         | value                                                                 | introduction                                                                                                                                                                                     |
+| :-------------: | ------------ | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|     nowDate     | DateObject   | new Date()                                                            | Current date                                                                                                                                                                                     |
+|      i18n       | String       | 'EN'、'ZH'                                                            | Internationalization                                                                                                                                                                             |
+|      theme      | String       | 'light'、'dark'                                                       | Theme                                                                                                                                                                                            |
+|    markDate     | Array        | ['2020-3-1','2020-3-2','2020-3-3'...]                                 | Marking date                                                                                                                                                                                     |
+| disableDateRule | String       | 'piecemeal','range'                                                   | Disable date rule.`piecemeal` for nonsequence, `range` for sequence.                                                                                                                             |
+|   disableDate   | Array/Object | ['2020-3-1','2020-3-2'...] or [{start:"2019-3-27"},{end:"2020-3-27"}] | When the `disableDateRule` is `piecemeal` ,The value format is `['2020-3-1','2020-3-2'...]`, When the `disableDateRule` is `range`,The value format is `[{start:"2019-3-27"},{end:"2020-3-27"}]` |
+|   pickerRule    | String       | 'singleChoice','freeChoice','rangeChoice'                             | Pick rule                                                                                                                                                                                        |
+|  pickerResult   | Array        |                                                                       | Pick result.Please bind with external variable to get the final result,Return value is time stamp.                                                                                               |
+|   pickerDone    | Boolean      |                                                                       | Used to bind to the `Done` button.                                                                                                                                                               |
 
 ## License
 
-
-[MIT](https://github.com/Runningzs/praecox-datepicker/blob/master/LICENSE)# praecox-datepicker
+[MIT](https://github.com/Runningzs/praecox-datepicker/blob/master/LICENSE)

@@ -43,6 +43,71 @@
     $thisView = "m";
   }
 </script>
+
+<style>
+  table {
+    padding: 0;
+    border-collapse: collapse;
+    position: absolute;
+    width: 301px;
+  }
+
+  tbody {
+    padding: 0;
+    width: 301px;
+  }
+
+  tr {
+    padding: 0;
+  }
+
+  td {
+    display: inline-flex;
+    padding: 0;
+    line-height: 30px;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .YearView_light,
+  .YearView_dark {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+  .YearView_light td,
+  .YearView_dark td {
+    color: #737373;
+    width: 32%;
+    height: 57px;
+    line-height: 57px;
+    font-size: 14px;
+    transition: all 0.2s ease-in-out 0s;
+  }
+  .YearView_light td:hover,
+  .YearView_dark td:hover {
+    background-color: #f5f8ff;
+    color: #0a84ff;
+    border-radius: 3px;
+  }
+  .YearView_light td:active,
+  .YearView_dark td:active {
+    background-color: #0060df;
+    color: #ffffff;
+  }
+
+  .YearView_dark td:hover {
+    background-color: #38383d;
+    color: #f9f9fa;
+    border-radius: 3px;
+  }
+  .YearView_dark td:active {
+    background-color: #0a84ff;
+    color: #ffffff;
+  }
+</style>
+
 <table
   transition:scale={{ duration: 100, delay: 100, opacity: 0.1, start: 0.5, easing: quintOut }}>
   <tbody>
@@ -92,67 +157,3 @@
     </tr>
   </tbody>
 </table>
-
-<style >
-
-table {
-  padding: 0;
-  border-collapse: collapse;
-  position: absolute;
-  width: 301px;
-}
-
-
-tbody {
-  padding: 0;
-  width: 301px;
-}
-
-tr {
-  padding: 0;
-}
-
-td, .YearView_light td, .YearView_dark td, .YearView_light .th_light, .YearView_light .th_dark, .th_dark, .th_light {
-  display: inline-flex;
-  padding: 0;
-  height: 30px;
-  width: 42.8px;
-  line-height: 30px;
-  justify-content: center;
-  color: #b1b1b3;
-  cursor: pointer;
-  user-select: none;
-}
-td:hover{
-  background-color: rgba(10, 132, 255, 0.1);
-  color: #0c0c0d;
-  border-radius: 3px;
-}
-
-.dark{
-  color: #737373;
-}
-.dark:hover{
-  background-color: #003eaa;
-  color: #f9f9fa;
-  border-radius: 3px;
-}
-.YearView_light, .YearView_dark {
-  width: 100%;
-  padding: 0;
-  text-align: center;
-}
-.YearView_light td,  .YearView_dark td, .YearView_dark .endChosen_dark, .YearView_dark .endChosen_light, .YearView_dark .startChosen_dark, .YearView_dark .startChosen_light, .YearView_dark .selected_dark, .YearView_dark .selected_light, .YearView_dark .isFreeChosen_dark, .YearView_dark .isFreeChosen_light, .YearView_dark .isChosen_dark, .YearView_dark .isChosen_light, .YearView_light .th_light, .YearView_dark .th_light, .YearView_light .th_dark, .YearView_dark .th_dark {
-  color: #0c0c0d;
-  width: 32%;
-  height: 52.5px;
-  line-height: 52.5px;
-}
-
-.YearView_dark td, .YearView_dark .endChosen_dark, .YearView_dark .endChosen_light, .YearView_dark .startChosen_dark, .YearView_dark .startChosen_light, .YearView_dark .selected_dark, .YearView_dark .selected_light, .YearView_dark .isFreeChosen_dark, .YearView_dark .isFreeChosen_light, .YearView_dark .isChosen_dark, .YearView_dark .isChosen_light, .YearView_dark .th_light, .YearView_dark .th_dark {
-  color: #ededf0;
-}
-.YearView_dark td:hover, .YearView_dark .endChosen_dark:hover, .YearView_dark .endChosen_light:hover, .YearView_dark .startChosen_dark:hover, .YearView_dark .startChosen_light:hover, .YearView_dark .selected_dark:hover, .YearView_dark .selected_light:hover, .YearView_dark .isFreeChosen_dark:hover, .YearView_dark .isFreeChosen_light:hover, .YearView_dark .isChosen_dark:hover, .YearView_dark .isChosen_light:hover, .YearView_dark .th_light:hover, .YearView_dark .th_dark:hover {
-  background-color: #003eaa;
-}
-</style>

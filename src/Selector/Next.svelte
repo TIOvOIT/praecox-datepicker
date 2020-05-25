@@ -1,10 +1,17 @@
 <script>
+  import IconArrowForward from "../assets/@icons/ArrowForward.svelte";
+
   import { getContext } from "svelte";
 
   let view = getContext("thisView");
   let viewYear = getContext("viewYear");
   let viewMonth = getContext("viewMonth");
   let theme = getContext("theme");
+  let i18n = getContext("i18n");
+  const OPERAT_NAME = {
+    EN: "Next",
+    ZH: "下一页"
+  };
 
   function nextClick() {
     switch ($view) {
@@ -29,28 +36,42 @@
 </script>
 
 <style>
-.next_light, .next_dark {
-  width: 20%;
-  line-height: 30px;
-  text-align: center;
-  stroke: #b1b1b3;
-  cursor: pointer;
-}
-.next_light:hover{
-  background-color: rgba(10, 132, 255, 0.1);
-  stroke: #0c0c0d;
-  border-radius: 3px;
-}
-.next_dark {
-  stroke: #4a4a4f;
-}
-.next_dark:hover {
-  background-color: #003eaa;
-  stroke: #f9f9fa;
-  border-radius: 3px;
-}
+  .next_light,
+  .next_dark {
+    width: 20%;
+    line-height: 48px;
+    text-align: center;
+    fill: #b1b1b3;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out 0s;
+  }
+  .next_light:hover,
+  .next_dark:hover {
+    fill: #0060df;
+  }
+  .next_light:active,
+  .next_dark:active {
+    fill: #0a84ff;
+  }
+  .next_light .topButton,
+  .next_dark .topButton {
+    width: 20px;
+    margin: 0 auto;
+  }
+
+  .next_dark {
+    fill: #4a4a4f;
+  }
+  .next_dark:hover {
+    fill: #0060df;
+  }
+  .next_dark:active {
+    fill: #0a84ff;
+  }
 </style>
 
-<div class={'next_' + theme} on:click={nextClick}>
- <svg xmlns='http://www.w3.org/2000/svg' width='20' height='30' viewBox='0 0 512 512'><polyline points='184 112 328 256 184 400' style='fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px'/></svg>
+<div class={'next_' + theme} on:click={nextClick} title={OPERAT_NAME[i18n]}>
+  <div class=" topButton">
+    <IconArrowForward />
+  </div>
 </div>
