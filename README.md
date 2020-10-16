@@ -11,7 +11,7 @@ Theme<br/>
 
 ## Demo
 
-[Demo](https://svelte.dev/repl/e010922893964594a8a888aae1ec4fd5?version=3.19.2)
+[Preview](https://svelte.dev/repl/f153bee994974251b59041832a099427?version=3.29.0)
 
 ## Install
 
@@ -33,17 +33,71 @@ import Datepicker from "praecox-datepicker";
 
 ## Props
 
-|      name       | type         | value                                                                 | introduction                                                                                                                                                                                     |
-| :-------------: | ------------ | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-|     nowDate     | DateObject   | new Date()                                                            | Current date                                                                                                                                                                                     |
-|      i18n       | String       | 'EN'、'ZH'                                                            | Internationalization                                                                                                                                                                             |
-|      theme      | String       | 'light'、'dark'                                                       | Theme                                                                                                                                                                                            |
-|    markDate     | Array        | ['2020-3-1','2020-3-2','2020-3-3'...]                                 | Marking date                                                                                                                                                                                     |
-| disableDateRule | String       | 'piecemeal','range'                                                   | Disable date rule.`piecemeal` for nonsequence, `range` for sequence.                                                                                                                             |
-|   disableDate   | Array/Object | ['2020-3-1','2020-3-2'...] or [{start:"2019-3-27"},{end:"2020-3-27"}] | When the `disableDateRule` is `piecemeal` ,The value format is `['2020-3-1','2020-3-2'...]`, When the `disableDateRule` is `range`,The value format is `[{start:"2019-3-27"},{end:"2020-3-27"}]` |
-|   pickerRule    | String       | 'singleChoice','freeChoice','rangeChoice'                             | Pick rule                                                                                                                                                                                        |
-|  pickerResult   | Array        |                                                                       | Pick result.Please bind with external variable to get the final result,Return value is time stamp.                                                                                               |
-|   pickerDone    | Boolean      |                                                                       | Used to bind to the `Done` button.                                                                                                                                                               |
+| Props         | Type                                                            | Default            | Description                                                                                                                                                                                                                                                                                |
+| ------------- | --------------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| nowDate       | Date                                                            | new Date\(\)       | Current date                                                                                                                                                                                                                                                                               |
+| lang          | "en" \| "zh"                                                    | "en"               | Language                                                                                                                                                                                                                                                                                   |
+| viewDate      | Date                                                            | nowDate            | Current view date                                                                                                                                                                                                                                                                          |
+| pickerRule    | "single" \| "range" \| "free"                                   | "single"           | Date picker mode                                                                                                                                                                                                                                                                           |
+| disabled      | Date Array                                                      | \[\]               | Disable date. When the value type is not an array, the length is not `2`, and a single disabled mode is adopted. If it is `2` and the first value is smaller than the second value, it is a range disabled mode; when the value of `Array[0]` is an array , Can be disabled multiple times |
+| selected      | string ｜ Array                                                 | \[\]               | Selected date, supports two-way binding, can be used to bind external results [Issues](https://github.com/TIOvOIT/praecox-datepicker/issues/4)                                                                                                                                             |
+| marked        | Date Array                                                      | \[\]               | Date marked                                                                                                                                                                                                                                                                                |
+| weekNameMode  | "weekShortAbbreviation" \| "weekAbbreviation" \| "weekFullName" | "weekAbbreviation" |                                                                                                                                                                                                                                                                                            |
+| monthNameMode | "monthAbbreviation" \| "monthFullName"                          | "monthFullName"    |                                                                                                                                                                                                                                                                                            |
+| theme         | "light" \| "dark"                                               | "light"            |                                                                                                                                                                                                                                                                                            |
+| reSelected    | boolean                                                         | false              | When the range is selected, the value can be reset [Issues](https://github.com/TIOvOIT/praecox-datepicker/issues/3)                                                                                                                                                                        |
+| pickerDone    | boolean                                                         | false              | Binding with the `Finish` button to increase UE and facilitate control of the display                                                                                                                                                                                                      |
+
+## Built-in function
+
+```javascript
+formatDatetamp;
+getNextYearAndMonth;
+getPrevYearAndMonth;
+getThisMonthData;
+testDaysInTheMouth;
+testLeapYear;
+testSolarMonthOf31Days;
+thisMonthHasManyWeek;
+theDayOfTheWeek;
+```
+
+## Custom styles
+
+List of custom style variable names
+
+```css
+--praecox-calendar-custom-width: 330px;
+--praecox-calendar-custom-height: 310px;
+--praecox-calendar-custom-inner-width: 310px;
+--praecox-calendar-custom-inner-height: 220px;
+--praecox-calendar-custom-head-height: 48px;
+--praecox-calendar-custom-icon-size: 20px;
+--praecox-calendar-custom-border-radius: 3px;
+--praecox-calendar-custom-font-family: sans-serif;
+--praecox-calendar-custom-number-font-family: "Open Sans", sans-serif;
+
+--praecox-calendar-custom-main-color: #0060df;
+--praecox-calendar-custom-main-color-hover: #0a84ff;
+--praecox-calendar-custom-main-color-active: #0060df;
+--praecox-calendar-custom-focused-color: #12bc00;
+--praecox-calendar-custom-adjunctive-color: rgba(0, 96, 223, 0.1);
+--praecox-calendar-custom-secondary-color: rgba(0, 96, 223, 0.2);
+--praecox-calendar-custom-selected-color: #002275;
+
+--praecox-calendar-custom-weekend-color: #f9f9fa;
+--praecox-calendar-custom-outsidemonth-color: #b1b1b3;
+--praecox-calendar-custom-overbackground-color: #f5f8ff;
+
+--praecox-calendar-custom-font-main-color: #181818;
+--praecox-calendar-custom-font-disabled-color: #d7d7db;
+--praecox-calendar-custom-font-secondary-color: #b1b1b3;
+
+--praecox-calendar-custom-background: #ffffff;
+--praecox-calendar-custom-background-hover: #f5f8ff;
+--praecox-calendar-custom-border: 1px solid #ededf0;
+--praecox-calendar-custom-boxshadow: 0px 1px solid #ededf0;
+```
 
 ## License
 

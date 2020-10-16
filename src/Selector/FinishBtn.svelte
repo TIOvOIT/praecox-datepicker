@@ -1,61 +1,59 @@
 <script>
-  import IconCheckmark from "../assets/@icons/Checkmark.svelte";
+  import IconCheckmark from "../@icons/Checkmark.svelte";
 
   import { getContext, onMount } from "svelte";
-  let theme = getContext("theme");
+  import noun from "../i18n";
 
-  export let pickerDone = false;
-
-  const FINISH_NAME = {
-    EN: "Done",
-    ZH: "完成"
-  };
-
-  let i18n = getContext("i18n");
+  let praecoxCalendarData = getContext("praecoxCalendarData");
   function handleClick() {
-    pickerDone = true;
+    $praecoxCalendarData.pickerDone = true;
   }
   onMount(() => {
-    pickerDone = false;
+    $praecoxCalendarData.pickerDone = false;
   });
 </script>
 
 <style>
-  .finish_light,
-  .finish_dark {
+  .finish-button {
     width: 20%;
-    line-height: 48px;
+    line-height: var(
+      --praecox-calendar-custom-head-height,
+      var(--praecox-calendar-head-height)
+    );
     text-align: center;
-    fill: #b1b1b3;
+    fill: var(
+      --praecox-calendar-custom-font-secondary-color,
+      var(--praecox-calendar-font-secondary-color)
+    );
     cursor: pointer;
     transition: all 0.2s ease-in-out 0s;
   }
-  .finish_light:hover,
-  .finish_dark:hover {
-    fill: #0060df;
+  .finish-button:hover {
+    fill: var(
+      --praecox-calendar-custom-main-color,
+      var(--praecox-calendar-main-color)
+    );
   }
-  .finish_light:active,
-  .finish_dark:active {
-    fill: #0a84ff;
+  .finish-button:active {
+    fill: var(
+      --praecox-calendar-custom-main-color-active,
+      var(--praecox-calendar-main-color-active)
+    );
   }
-  .finish_light .topButton,
-  .finish_dark .topButton {
-    width: 20px;
+  .finish-button,
+  .topButton {
+    width: var(
+      --praecox-calendar-custom-icon-size,
+      var(--praecox-calendar-icon-size)
+    );
     margin: 0 auto;
-  }
-
-  .finish_dark {
-    fill: #4a4a4f;
-  }
-  .finish_dark:hover {
-    fill: #0060df;
-  }
-  .finish_dark:active {
-    fill: #0a84ff;
   }
 </style>
 
-<div class={'finish_' + theme} on:click={handleClick} title={FINISH_NAME[i18n]}>
+<div
+  class={'finish-button'}
+  on:click={handleClick}
+  title={noun[$praecoxCalendarData.lang].doneName}>
   <div class=" topButton">
     <IconCheckmark />
   </div>

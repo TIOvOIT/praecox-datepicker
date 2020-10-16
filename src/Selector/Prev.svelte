@@ -1,72 +1,74 @@
 <script>
-  import IconArrowBack from "../assets/@icons/ArrowBack.svelte";
-
-  import { getContext } from "svelte";
-
-  let viewYear = getContext("viewYear");
-  let viewMonth = getContext("viewMonth");
-
-  let view = getContext("thisView");
-  let theme = getContext("theme");
-  let i18n = getContext("i18n");
-  const OPERAT_NAME = {
-    EN: "Prev",
-    ZH: "上一页"
-  };
-
-  function prevClick() {
-    if ($view === "m") {
-      if ($viewMonth === 1) {
-        $viewMonth = 12;
-        $viewYear = $viewYear - 1;
-      } else {
-        $viewMonth = $viewMonth - 1;
-      }
-    } else if ($view === "y") {
-      $viewYear = $viewYear - 1;
-    } else if ($view === "d") {
-      $viewYear = $viewYear - 11;
+  import IconArrowBack from "../@icons/ArrowBack.svelte";
+  import { getPrevYearAndMonth } from "../calendar";
+  import noun from "../i18n";
+  import { onMount, getContext } from "svelte";
+  let praecoxCalendar = getContext("praecoxCalendarData");
+  function prev() {
+    let nd = new Date($praecoxCalendar.viewDate);
+    let ty = nd.getFullYear();
+    let tm = nd.getMonth() + 1;
+    let td = nd.getDate();
+    let [py, pm] = getPrevYearAndMonth(ty, tm);
+    switch ($praecoxCalendar.view) {
+      case "month":
+        $praecoxCalendar.viewDate = `${py}-${pm}-${td}`;
+        break;
+      case "year":
+        $praecoxCalendar.viewDate = `${ty - 1}-${tm}-${td}`;
+        break;
+      case "multi-years":
+        $praecoxCalendar.viewDate = `${ty - 9}-${tm}-${td}`;
+        break;
     }
+
+    $praecoxCalendar.action = "prev";
+    $praecoxCalendar.flag = !$praecoxCalendar.flag;
   }
 </script>
 
 <style>
-  .prev_light,
-  .prev_dark {
+  .prev-button {
     width: 20%;
-    line-height: 48px;
+    line-height: var(
+      --praecox-calendar-custom-head-height,
+      var(--praecox-calendar-head-height)
+    );
     text-align: center;
-    fill: #b1b1b3;
+    fill: var(
+      --praecox-calendar-custom-font-secondary-color,
+      var(--praecox-calendar-font-secondary-color)
+    );
     cursor: pointer;
     transition: all 0.2s ease-in-out 0s;
   }
-  .prev_light:hover,
-  .prev_dark:hover {
-    fill: #0060df;
+  .prev-button:hover {
+    fill: var(
+      --praecox-calendar-custom-main-color,
+      var(--praecox-calendar-main-color)
+    );
   }
-  .prev_light:active,
-  .prev_dark:active {
-    fill: #0a84ff;
+  .prev-button:active {
+    fill: var(
+      --praecox-calendar-custom-main-color-active,
+      var(--praecox-calendar-main-color-active)
+    );
   }
-  .prev_light .topButton,
-  .prev_dark .topButton {
-    width: 20px;
+  .prev-button,
+  .topButton {
+    width: var(
+      --praecox-calendar-custom-icon-size,
+      var(--praecox-calendar-icon-size)
+    );
     margin: 0 auto;
-  }
-
-  .prev_dark {
-    fill: #4a4a4f;
-  }
-  .prev_dark:hover {
-    fill: #0060df;
-  }
-  .prev_dark:active {
-    fill: #0a84ff;
   }
 </style>
 
-<div class={'prev_' + theme} on:click={prevClick} title={OPERAT_NAME[i18n]}>
-  <div class=" topButton">
+<div
+  class={'prev-button'}
+  on:click={prev}
+  title={noun[$praecoxCalendar.lang].prevName}>
+  <div class="topButton">
     <IconArrowBack />
   </div>
 </div>

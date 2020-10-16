@@ -4,7 +4,7 @@
 
 ## Demo
 
-[Demo](https://svelte.dev/repl/e010922893964594a8a888aae1ec4fd5?version=3.19.2)
+[Preview](https://svelte.dev/repl/f153bee994974251b59041832a099427?version=3.29.0)
 
 ## 预览
 
@@ -18,7 +18,7 @@ npm install --save praecox-datepicker
 
 ```
 
-## 使用
+## 基本使用
 
 ```javascript
 import Datepicker from "praecox-datepicker";
@@ -30,17 +30,71 @@ import Datepicker from "praecox-datepicker";
 
 ## Props
 
-|      Props      | 类型         | 参数                                                                  | 描述                                                                                                                                                   |
-| :-------------: | ------------ | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-|     nowDate     | DateObject   | new Date()                                                            | 当前日期                                                                                                                                               |
-|      i18n       | String       | 'EN'、'ZH'                                                            | 多语言                                                                                                                                                 |
-|      theme      | String       | 'light'、'dark'                                                       | 主题                                                                                                                                                   |
-|    markDate     | Array        | ['2020-3-1','2020-3-2','2020-3-3'...]                                 | 标记的日期集合                                                                                                                                         |
-| disableDateRule | String       | 'piecemeal'、'range'                                                  | 禁用规则。'piecemeal'表示零碎的，不连续的；'range'表示为一个范围。                                                                                     |
-|   disableDate   | Array/Object | ['2020-3-1','2020-3-2'...] 或 [{start:"2019-3-27"},{end:"2020-3-27"}] | 当`disableDateRule`为`piecemeal`时，格式为`['2020-3-1','2020-3-2'...]` 当`disableDateRule`为`range`时，格式为`[{start:"2019-3-27"},{end:"2020-3-27"}]` |
-|   pickerRule    | String       | 'singleChoice'、'freeChoice'、'rangeChoice'                           | 选取规则：singleChoice（单选）、freeChoice（自由选择）、rangeChoice(范围选择)                                                                          |
-|  pickerResult   | Array        |                                                                       | 选取结果，请与外部变量绑定来获取结果值,结果值格式受选取规则影响                                                                                        |
-|   pickerDone    | Boolean      |                                                                       | 用于与`完成`按钮绑定                                                                                                                                   |
+| Props         | 类型                                                            | 参数               | 说明                                                                                                                                                |
+| ------------- | --------------------------------------------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| nowDate       | Date                                                            | new Date\(\)       | 当前日期                                                                                                                                            |
+| lang          | "en" \| "zh"                                                    | "en"               | 语言                                                                                                                                                |
+| viewDate      | Date                                                            | nowDate            | 当前视图日期                                                                                                                                        |
+| pickerRule    | "single" \| "range" \| "free"                                   | "single"           | 选取模式                                                                                                                                            |
+| disabled      | Date Array                                                      | \[\]               | 禁用日期。当值类型不为数组时，长度不为 2，采取单个禁用模式，如果为 2 且第一个值比第二个值小，则为范围禁用模式；当 `Array[0]` 值为数组时，可多次禁用 |
+| selected      | string ｜ Array                                                 | \[\]               | 已选择日期，支持双向绑定，可用以绑定外部结果 [Issues](https://github.com/TIOvOIT/praecox-datepicker/issues/4)                                       |
+| marked        | Date Array                                                      | \[\]               | 已被标记日期                                                                                                                                        |
+| weekNameMode  | "weekShortAbbreviation" \| "weekAbbreviation" \| "weekFullName" | "weekAbbreviation" |                                                                                                                                                     |
+| monthNameMode | "monthAbbreviation" \| "monthFullName"                          | "monthFullName"    |                                                                                                                                                     |
+| theme         | "light" \| "dark"                                               | "light"            |                                                                                                                                                     |
+| reSelected    | boolean                                                         | false              | 范围选择时，值可以重置 [Issues](https://github.com/TIOvOIT/praecox-datepicker/issues/3)                                                             |
+| pickerDone    | boolean                                                         | false              | 和`完成`按钮绑定，用以增加 UE，方便控制显示                                                                                                         |
+
+## 内置函数
+
+```javascript
+formatDatetamp;
+getNextYearAndMonth;
+getPrevYearAndMonth;
+getThisMonthData;
+testDaysInTheMouth;
+testLeapYear;
+testSolarMonthOf31Days;
+thisMonthHasManyWeek;
+theDayOfTheWeek;
+```
+
+## 自定义样式
+
+自定义样式变量名列表
+
+```css
+--praecox-calendar-custom-width: 330px;
+--praecox-calendar-custom-height: 310px;
+--praecox-calendar-custom-inner-width: 310px;
+--praecox-calendar-custom-inner-height: 220px;
+--praecox-calendar-custom-head-height: 48px;
+--praecox-calendar-custom-icon-size: 20px;
+--praecox-calendar-custom-border-radius: 3px;
+--praecox-calendar-custom-font-family: sans-serif;
+--praecox-calendar-custom-number-font-family: "Open Sans", sans-serif;
+
+--praecox-calendar-custom-main-color: #0060df;
+--praecox-calendar-custom-main-color-hover: #0a84ff;
+--praecox-calendar-custom-main-color-active: #0060df;
+--praecox-calendar-custom-focused-color: #12bc00;
+--praecox-calendar-custom-adjunctive-color: rgba(0, 96, 223, 0.1);
+--praecox-calendar-custom-secondary-color: rgba(0, 96, 223, 0.2);
+--praecox-calendar-custom-selected-color: #002275;
+
+--praecox-calendar-custom-weekend-color: #f9f9fa;
+--praecox-calendar-custom-outsidemonth-color: #b1b1b3;
+--praecox-calendar-custom-overbackground-color: #f5f8ff;
+
+--praecox-calendar-custom-font-main-color: #181818;
+--praecox-calendar-custom-font-disabled-color: #d7d7db;
+--praecox-calendar-custom-font-secondary-color: #b1b1b3;
+
+--praecox-calendar-custom-background: #ffffff;
+--praecox-calendar-custom-background-hover: #f5f8ff;
+--praecox-calendar-custom-border: 1px solid #ededf0;
+--praecox-calendar-custom-boxshadow: 0px 1px solid #ededf0;
+```
 
 ## License
 

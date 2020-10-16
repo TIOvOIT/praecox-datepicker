@@ -1,76 +1,73 @@
 <script>
-  import IconArrowForward from "../assets/@icons/ArrowForward.svelte";
+  import IconArrowForward from "../@icons/ArrowForward.svelte";
+  import { getNextYearAndMonth } from "../calendar";
+  import noun from "../i18n";
+  import { onMount, getContext } from "svelte";
+  let praecoxCalendar = getContext("praecoxCalendarData");
 
-  import { getContext } from "svelte";
-
-  let view = getContext("thisView");
-  let viewYear = getContext("viewYear");
-  let viewMonth = getContext("viewMonth");
-  let theme = getContext("theme");
-  let i18n = getContext("i18n");
-  const OPERAT_NAME = {
-    EN: "Next",
-    ZH: "下一页"
-  };
-
-  function nextClick() {
-    switch ($view) {
-      case "m":
-        if ($viewMonth === 12) {
-          $viewMonth = 1;
-          $viewYear = $viewYear + 1;
-        } else {
-          $viewMonth = $viewMonth + 1;
-        }
+  function next() {
+    let nd = new Date($praecoxCalendar.viewDate);
+    let ty = nd.getFullYear();
+    let tm = nd.getMonth() + 1;
+    let td = nd.getDate();
+    let [ny, nm] = getNextYearAndMonth(ty, tm);
+    switch ($praecoxCalendar.view) {
+      case "month":
+        $praecoxCalendar.viewDate = `${ny}-${nm}-${td}`;
         break;
-      case "y":
-        $viewYear = $viewYear + 1;
+      case "year":
+        $praecoxCalendar.viewDate = `${ty + 1}-${tm}-${td}`;
         break;
-      case "d":
-        $viewYear = $viewYear + 11;
-        break;
-      default:
+      case "multi-years":
+        $praecoxCalendar.viewDate = `${ty + 9}-${tm}-${td}`;
         break;
     }
+    $praecoxCalendar.action = "next";
+    $praecoxCalendar.flag = !$praecoxCalendar.flag;
   }
 </script>
 
 <style>
-  .next_light,
-  .next_dark {
+  .next-button {
     width: 20%;
-    line-height: 48px;
+    line-height: var(
+      --praecox-calendar-custom-head-height,
+      var(--praecox-calendar-head-height)
+    );
     text-align: center;
-    fill: #b1b1b3;
+    fill: var(
+      --praecox-calendar-custom-font-secondary-color,
+      var(--praecox-calendar-font-secondary-color)
+    );
     cursor: pointer;
     transition: all 0.2s ease-in-out 0s;
   }
-  .next_light:hover,
-  .next_dark:hover {
-    fill: #0060df;
+  .next-button:hover {
+    fill: var(
+      --praecox-calendar-custom-main-color,
+      var(--praecox-calendar-main-color)
+    );
   }
-  .next_light:active,
-  .next_dark:active {
-    fill: #0a84ff;
+  .next-button:active {
+    fill: var(
+      --praecox-calendar-custom-main-color-active,
+      var(--praecox-calendar-main-color-active)
+    );
   }
-  .next_light .topButton,
-  .next_dark .topButton {
-    width: 20px;
+  .next-button,
+  .topButton {
+    width: var(
+      --praecox-calendar-custom-icon-size,
+      var(--praecox-calendar-icon-size)
+    );
     margin: 0 auto;
-  }
-
-  .next_dark {
-    fill: #4a4a4f;
-  }
-  .next_dark:hover {
-    fill: #0060df;
-  }
-  .next_dark:active {
-    fill: #0a84ff;
   }
 </style>
 
-<div class={'next_' + theme} on:click={nextClick} title={OPERAT_NAME[i18n]}>
+<div
+  class={'next-button'}
+  on:click={next}
+  title={noun[$praecoxCalendar.lang].nextName}>
   <div class=" topButton">
     <IconArrowForward />
   </div>
