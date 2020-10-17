@@ -4,7 +4,9 @@
 
 ## Demo
 
-[Preview](https://svelte.dev/repl/f153bee994974251b59041832a099427?version=3.29.0)
+[速览](https://svelte.dev/repl/f153bee994974251b59041832a099427?version=3.29.0)
+[多重禁用](https://svelte.dev/repl/7fb09d23d741461b8e2c435c4c0d5ef1?version=3.29.0)
+[自定义样式](https://svelte.dev/repl/1ddc67726a734df7a47421959e48e38a?version=3.29.0)
 
 ## 预览
 
