@@ -50,15 +50,17 @@ import Datepicker from "praecox-datepicker";
 ## 内置函数
 
 ```javascript
-formatDatetamp;
-getNextYearAndMonth;
-getPrevYearAndMonth;
-getThisMonthData;
-testDaysInTheMouth;
-testLeapYear;
-testSolarMonthOf31Days;
-thisMonthHasManyWeek;
-theDayOfTheWeek;
+import Datepicker, {
+  formatDatetamp,
+  getNextYearAndMonth,
+  getPrevYearAndMonth,
+  getThisMonthData,
+  testDaysInTheMouth,
+  testLeapYear,
+  testSolarMonthOf31Days,
+  thisMonthHasManyWeek,
+  theDayOfTheWeek,
+} from "praecox-datepicker";
 ```
 
 ## 自定义样式

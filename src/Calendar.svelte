@@ -1,3 +1,28 @@
+<script context="module">
+  import {
+    formatDatetamp,
+    getNextYearAndMonth,
+    getPrevYearAndMonth,
+    getThisMonthData,
+    testDaysInTheMouth,
+    testLeapYear,
+    testSolarMonthOf31Days,
+    thisMonthHasManyWeek,
+    theDayOfTheWeek
+  } from "./calendar.js";
+  export {
+    formatDatetamp,
+    getNextYearAndMonth,
+    getPrevYearAndMonth,
+    getThisMonthData,
+    testDaysInTheMouth,
+    testLeapYear,
+    testSolarMonthOf31Days,
+    thisMonthHasManyWeek,
+    theDayOfTheWeek
+  };
+</script>
+
 <script>
   import { setContext, getContext, beforeUpdate } from "svelte";
   import { writable } from "svelte/store";

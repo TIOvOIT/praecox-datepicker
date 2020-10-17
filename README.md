@@ -53,15 +53,17 @@ import Datepicker from "praecox-datepicker";
 ## Built-in function
 
 ```javascript
-formatDatetamp;
-getNextYearAndMonth;
-getPrevYearAndMonth;
-getThisMonthData;
-testDaysInTheMouth;
-testLeapYear;
-testSolarMonthOf31Days;
-thisMonthHasManyWeek;
-theDayOfTheWeek;
+import Datepicker, {
+  formatDatetamp,
+  getNextYearAndMonth,
+  getPrevYearAndMonth,
+  getThisMonthData,
+  testDaysInTheMouth,
+  testLeapYear,
+  testSolarMonthOf31Days,
+  thisMonthHasManyWeek,
+  theDayOfTheWeek,
+} from "praecox-datepicker";
 ```
 
 ## Custom styles
