@@ -9,7 +9,7 @@
   $: currentYear =
     new Date(dateDate).getFullYear() ==
     new Date($praecoxCalendar.nowDate).getFullYear();
-  $: currentMonth = new Date(dateDate).getMonth();
+  $: currentMonth = new Date($praecoxCalendar.nowDate).getMonth();
 
   function pickMonth(i) {
     let d = new Date($praecoxCalendar.viewDate);
