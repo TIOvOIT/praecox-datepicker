@@ -69,6 +69,8 @@
     if ($praecoxCalendar.pickerMode == "free") {
       freePicker(day);
     }
+
+    $praecoxCalendar.changed += 1;
   }
 
   function testSelectedRange(n) {

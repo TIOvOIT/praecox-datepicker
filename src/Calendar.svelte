@@ -29,6 +29,11 @@
   import CalendarHader from "./Selector/Selector.svelte";
   import CalendarBody from "./body/CalendarBody.svelte";
   import "./fix-date.js";
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
+  let changed = 0;
 
   /**
    * Set base date
@@ -117,7 +122,8 @@
     disabled: disabled,
     selected: selected,
     focused: marked,
-    pickerDone: pickerDone
+    pickerDone: pickerDone,
+    changed: changed
   });
 
   setContext("praecoxCalendarData", praecoxCalendarData);
@@ -128,6 +134,11 @@
     selected = $praecoxCalendarConfig.selected;
     pickerDone = $praecoxCalendarConfig.pickerDone;
   });
+
+  $: if( $praecoxCalendarData.changed > changed ) {
+    changed = $praecoxCalendarData.changed;
+    dispatch('change', $praecoxCalendarData.selected);
+  }
 </script>
 
 <style>
