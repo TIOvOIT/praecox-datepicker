@@ -10,6 +10,30 @@ export default {
     prevName: "上一页",
     nextName:"下一页"
   },
+  es: {
+    weekShortAbbreviation: ["L", "M", "W", "J", "V", "S", "D"],
+    weekAbbreviation: ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"],
+    weekFullName: ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"],
+    monthAbbreviation: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sept", "Oct", "Nov", "Dic"],
+    monthFullName: [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Deciembre",
+    ],
+    today: "Hoy",
+    doneName: "Listo",
+    prevName: "Ant",
+    nextName:"Sig"
+  },
   en: {
     weekShortAbbreviation: ["M", "T", "W", "T", "F", "S", "S"],
     weekAbbreviation: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
