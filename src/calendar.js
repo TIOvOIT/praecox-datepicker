@@ -193,17 +193,15 @@ export function getFirstWeekOfTheMonth(n) {
 export function getMidWeekOfTheMonth(n, s) {
   let td = new Date(+n + 24 * 60 * 60 * 1000);
   let ty = td.getFullYear();
-  let tm = td.getMonth() + 1;
+  let tm = td.getMonth();
   let d = td.getDate();
   let midWeekList = [];
   midWeekList.length = 7;
-  if (s && tm == 12) {
-    for (let index = 0; index < midWeekList.length; index++) {
-      midWeekList[index] = new Date(`${ty + 1}-1-${d + index}`);
-    }
-  } else {
-    for (let index = 0; index < midWeekList.length; index++) {
-      midWeekList[index] = new Date(`${ty}-${tm}-${d + index}`);
+  for (let index = 0; index < midWeekList.length; index++) {
+    if (s && tm == 11) {
+      midWeekList[index] = new Date(ty + 1, 1, d + index);
+    } else {
+      midWeekList[index] = new Date(ty, tm, d + index);
     }
   }
   return midWeekList;
