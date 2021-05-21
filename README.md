@@ -2,8 +2,6 @@
 
 A date picker built with Svelte.Simple and flexible, supporting functions such as single selection, multiple selection, disabling, and marking.
 
-[中文](https://github.com/Runningzs/praecox-datepicker/blob/master/README-ZH.md)
-
 ## Screenshot
 
 Theme<br/>
