@@ -81,5 +81,29 @@ export default {
     doneName: "Готово",
     prevName: "Назад",
     nextName:"Вперед"
-  }
+  },
+  de: {
+    weekShortAbbreviation: ["M", "D", "M", "D", "F", "S", "S"],
+    weekAbbreviation: ["Mon", "Die", "Mit", "Don", "Fre", "Sam", "Son"],
+    weekFullName: ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"],
+    monthAbbreviation: ["Jan", "Feb", "März", "Apr", "Mai", "Juni", "July", "Aug", "Sept", "Okt", "Nov", "Dez"],
+    monthFullName: [
+      "Januar",
+      "Februar",
+      "März",
+      "April",
+      "Mai",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "Dezember",
+    ],
+    today: "Heute",
+    doneName: "Übernehmen",
+    prevName: "Früher",
+    nextName:"Später"
+  },
 };
