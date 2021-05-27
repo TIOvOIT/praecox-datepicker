@@ -106,4 +106,28 @@ export default {
     prevName: "Früher",
     nextName:"Später"
   },
+  it: {
+    weekShortAbbreviation: ["L", "M", "M", "G", "V", "S", "D"],
+    weekAbbreviation: ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"],
+    weekFullName: ["Lunedí", "Martedí", "Mercoledí", "Giovedí", "Venerdí", "Sabato", "Domenica"],
+    monthAbbreviation: ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"],
+    monthFullName: [
+      "Gennaio",
+      "Febbraio",
+      "Marzo",
+      "Aprile",
+      "Maggio",
+      "Giugno",
+      "Luglio",
+      "Agosto",
+      "Settembre",
+      "Ottobre",
+      "Novembre",
+      "Dicembre",
+    ],
+    today: "Oggi",
+    doneName: "Fatto",
+    prevName: "Prima",
+    nextName:"Dopo"
+  },
 };
