@@ -52,11 +52,11 @@ import Datepicker from "praecox-datepicker";
 
 ```javascript
 import Datepicker, {
-  formatDatetamp,
+  formatDatestamp,
   getNextYearAndMonth,
   getPrevYearAndMonth,
   getThisMonthData,
-  testDaysInTheMouth,
+  testDaysInTheMonth,
   testLeapYear,
   testSolarMonthOf31Days,
   thisMonthHasManyWeek,

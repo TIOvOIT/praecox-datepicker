@@ -18,7 +18,7 @@ export function theDayOfTheWeek(n) {
  * @param {string} f
  * @returns {string}
  */
-export function formatDatetamp(n, f) {
+export function formatDatestamp(n, f) {
   let d = new Date(n);
   let ty = d.getFullYear();
   let tm = d.getMonth() + 1;
@@ -90,7 +90,7 @@ export function testLeapYear(y) {
  * @param {number} m
  * @returns {number}
  */
-export function testDaysInTheMouth(y, m) {
+export function testDaysInTheMonth(y, m) {
   let d = NaN;
   if (testLeapYear(y) && m === 2) {
     d = 29;
@@ -152,7 +152,7 @@ export function thisMonthHasManyWeek(n) {
   let ty = td.getFullYear();
   let tm = td.getMonth() + 1;
   let dotw = theDayOfTheWeek(`${ty}-${tm}-1`);
-  let days = testDaysInTheMouth(ty, tm);
+  let days = testDaysInTheMonth(ty, tm);
   let firstWeekDays = 8 - dotw;
   let weekNum = Math.ceil((days - firstWeekDays) / 7 + 1);
   return weekNum;
@@ -169,7 +169,7 @@ export function getFirstWeekOfTheMonth(n) {
   let tm = td.getMonth() + 1;
   let dotw = theDayOfTheWeek(`${ty}-${tm}-1`);
   let [py, pm] = getPrevYearAndMonth(ty, tm);
-  let pmd = testDaysInTheMouth(py, pm);
+  let pmd = testDaysInTheMonth(py, pm);
   let firstWeekList = [];
   firstWeekList.length = 7;
   let i = 8 - dotw;
@@ -219,7 +219,7 @@ export function getLastWeekOfTheMonth(n) {
   let d = td.getDate();
   let [ny, nm] = getNextYearAndMonth(ty, tm);
   let lastWeekList = [];
-  let cmd = testDaysInTheMouth(ty, tm);
+  let cmd = testDaysInTheMonth(ty, tm);
   let times = cmd - d + 1;
   for (let index = 0; index < times; index++) {
     lastWeekList[index] = new Date(`${ty}-${tm}-${d + index}`);
@@ -242,7 +242,7 @@ export function getThisMonthData(n) {
   let tm = td.getMonth() + 1;
   let d = td.getDate();
   let [ny, nm] = getNextYearAndMonth(ty, tm);
-  let cmd = testDaysInTheMouth(ty, tm);
+  let cmd = testDaysInTheMonth(ty, tm);
   //The first week
   let theFirstWeek = getFirstWeekOfTheMonth(n);
   //The second week

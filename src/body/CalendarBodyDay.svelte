@@ -1,6 +1,6 @@
 <script>
   import { beforeUpdate, getContext } from "svelte";
-  import { formatDatetamp, theDayOfTheWeek } from "../calendar.js";
+  import { formatDatestamp, theDayOfTheWeek } from "../calendar.js";
   import noun from "../i18n";
 
   export let day = 1;
@@ -45,7 +45,7 @@
     }
   });
 
-  function formarWeekName(n) {
+  function formatWeekName(n) {
     let dotw = theDayOfTheWeek(n);
     return noun[$praecoxCalendar.lang][`weekFullName`][dotw - 1];
   }
@@ -370,7 +370,7 @@
   class:calendar-weekend={isWeekend}
   aria-disabled={disabled}
   aria-selected={isSelected}
-  title={isToday ? noun[$praecoxCalendar.lang].today + ' , ' + formarWeekName(day) + ' , ' + formatDatetamp(day, 'yyyy-mm-dd') : formarWeekName(day) + ' , ' + formatDatetamp(day, 'yyyy-mm-dd')}>
+  title={isToday ? noun[$praecoxCalendar.lang].today + ' , ' + formatWeekName(day) + ' , ' + formatDatestamp(day, 'yyyy-mm-dd') : formatWeekName(day) + ' , ' + formatDatestamp(day, 'yyyy-mm-dd')}>
   <span
     role="presentation"
     on:click={pick}
