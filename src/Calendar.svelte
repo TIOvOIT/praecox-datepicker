@@ -1,21 +1,21 @@
 <script context="module">
   import {
-    formatDatetamp,
+    formatDatestamp,
     getNextYearAndMonth,
     getPrevYearAndMonth,
     getThisMonthData,
-    testDaysInTheMouth,
+    testDaysInTheMonth,
     testLeapYear,
     testSolarMonthOf31Days,
     thisMonthHasManyWeek,
     theDayOfTheWeek
   } from "./calendar.js";
   export {
-    formatDatetamp,
+    formatDatestamp,
     getNextYearAndMonth,
     getPrevYearAndMonth,
     getThisMonthData,
-    testDaysInTheMouth,
+    testDaysInTheMonth,
     testLeapYear,
     testSolarMonthOf31Days,
     thisMonthHasManyWeek,
@@ -26,7 +26,7 @@
 <script>
   import { setContext, getContext, beforeUpdate } from "svelte";
   import { writable } from "svelte/store";
-  import CalendarHader from "./Selector/Selector.svelte";
+  import CalendarHeader from "./Selector/Selector.svelte";
   import CalendarBody from "./body/CalendarBody.svelte";
   import "./fix-date.js";
   import { createEventDispatcher } from 'svelte';
@@ -242,7 +242,7 @@
 
 <div class="calendar calendar-{theme}">
   <div class="calendar-wrap">
-    <CalendarHader />
+    <CalendarHeader />
     <CalendarBody />
   </div>
 
