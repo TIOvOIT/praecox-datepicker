@@ -14,6 +14,7 @@
     switch ($praecoxCalendar.view) {
       case "month":
         $praecoxCalendar.viewDate = `${ny}-${nm}-${td}`;
+        $praecoxCalendar.reloadDisabled();
         break;
       case "year":
         $praecoxCalendar.viewDate = `${ty + 1}-${tm}-${td}`;

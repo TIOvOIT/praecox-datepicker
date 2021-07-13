@@ -113,6 +113,12 @@
    */
   export let finishBtn = true;
 
+  /**
+   * External function that get used to reload the disabled array on Next/Prev action
+   *
+  */
+  export let reloadDisabled;
+
   const praecoxCalendarData = writable({
     nowDate: [],
     viewDate: viewDate,
@@ -130,7 +136,12 @@
     focused: marked,
     pickerDone: pickerDone,
     changed: changed,
-    finishBtn: finishBtn
+    finishBtn: finishBtn,
+    reloadDisabled: () => {
+      if( typeof reloadDisabled == 'function' ) {
+        $praecoxCalendarData.disabled = reloadDisabled(getThisMonthData($praecoxCalendarData.viewDate).flat());
+      }
+    }
   });
 
   setContext("praecoxCalendarData", praecoxCalendarData);
@@ -141,6 +152,8 @@
     selected = $praecoxCalendarConfig.selected;
     pickerDone = $praecoxCalendarConfig.pickerDone;
   });
+
+  $praecoxCalendarData.reloadDisabled();
 
   $: if( $praecoxCalendarData.changed > changed ) {
     changed = $praecoxCalendarData.changed;
