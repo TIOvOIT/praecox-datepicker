@@ -17,12 +17,65 @@
 
   function pickYear(i) {
     let d = new Date($praecoxCalendar.viewDate);
+    $praecoxCalendar.reloadDisabled();
     let tm = d.getMonth() + 1;
     let td = d.getDate();
     $praecoxCalendar.viewDate = `${i}-${tm}-${td}`;
     $praecoxCalendar.view = "year";
   }
 </script>
+
+<tr role="row">
+  {#each yearList as item, _i}
+    {#if _i < 3}
+      <td role="gridcell" on:click={() => pickYear(item)}>
+        <span
+          role="presentation"
+          class=" praecox-Calendar-month"
+          class:current-year={new Date(
+            $praecoxCalendar.nowDate
+          ).getFullYear() === item}
+        >
+          {item}
+        </span>
+      </td>
+    {/if}
+  {/each}
+</tr>
+<tr role="row">
+  {#each yearList as item, _i}
+    {#if _i >= 3 && _i < 6}
+      <td role="gridcell" on:click={() => pickYear(item)}>
+        <span
+          role="presentation"
+          class=" praecox-Calendar-month"
+          class:current-year={new Date(
+            $praecoxCalendar.nowDate
+          ).getFullYear() === item}
+        >
+          {item}
+        </span>
+      </td>
+    {/if}
+  {/each}
+</tr>
+<tr role="row">
+  {#each yearList as item, _i}
+    {#if _i >= 6 && _i < 9}
+      <td role="gridcell" on:click={() => pickYear(item)}>
+        <span
+          role="presentation"
+          class=" praecox-Calendar-month"
+          class:current-year={new Date(
+            $praecoxCalendar.nowDate
+          ).getFullYear() === item}
+        >
+          {item}
+        </span>
+      </td>
+    {/if}
+  {/each}
+</tr>
 
 <style>
   tr {
@@ -63,46 +116,3 @@
     );
   }
 </style>
-
-<tr role="row">
-  {#each yearList as item, _i}
-    {#if _i < 3}
-      <td role="gridcell" on:click={() => pickYear(item)}>
-        <span
-          role="presentation"
-          class=" praecox-Calendar-month"
-          class:current-year={new Date($praecoxCalendar.nowDate).getFullYear() === item}>
-          {item}
-        </span>
-      </td>
-    {/if}
-  {/each}
-</tr>
-<tr role="row">
-  {#each yearList as item, _i}
-    {#if _i >= 3 && _i < 6}
-      <td role="gridcell" on:click={() => pickYear(item)}>
-        <span
-          role="presentation"
-          class=" praecox-Calendar-month"
-          class:current-year={new Date($praecoxCalendar.nowDate).getFullYear() === item}>
-          {item}
-        </span>
-      </td>
-    {/if}
-  {/each}
-</tr>
-<tr role="row">
-  {#each yearList as item, _i}
-    {#if _i >= 6 && _i < 9}
-      <td role="gridcell" on:click={() => pickYear(item)}>
-        <span
-          role="presentation"
-          class=" praecox-Calendar-month"
-          class:current-year={new Date($praecoxCalendar.nowDate).getFullYear() === item}>
-          {item}
-        </span>
-      </td>
-    {/if}
-  {/each}
-</tr>

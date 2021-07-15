@@ -1,3 +1,8 @@
+## 1.1.1
+
+* Fix the issues of reloadDisabled prop when selecting year or month view to jump
+
+
 ## 1.1.0
 
 * Add `CHANGELOG.md` file.

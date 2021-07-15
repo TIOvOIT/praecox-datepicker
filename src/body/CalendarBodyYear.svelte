@@ -13,12 +13,75 @@
 
   function pickMonth(i) {
     let d = new Date($praecoxCalendar.viewDate);
+    $praecoxCalendar.reloadDisabled();
     let ty = d.getFullYear();
     let td = d.getDate();
     $praecoxCalendar.viewDate = `${ty}-${i + 1}-${td}`;
     $praecoxCalendar.view = "month";
   }
 </script>
+
+<tr role="row">
+  {#each monthList as item, i}
+    {#if i < 3}
+      <td role="gridcell" on:click={() => pickMonth(i)}>
+        <span
+          role="presentation"
+          class=" praecox-Calendar-month"
+          class:current-month={currentMonth == i && currentYear}
+        >
+          {item}
+        </span>
+      </td>
+    {/if}
+  {/each}
+</tr>
+
+<tr role="row">
+  {#each monthList as item, i}
+    {#if i >= 3 && i < 6}
+      <td role="gridcell" on:click={() => pickMonth(i)}>
+        <span
+          role="presentation"
+          class=" praecox-Calendar-month"
+          class:current-month={currentMonth == i && currentYear}
+        >
+          {item}
+        </span>
+      </td>
+    {/if}
+  {/each}
+</tr>
+<tr role="row">
+  {#each monthList as item, i}
+    {#if i >= 6 && i < 9}
+      <td role="gridcell" on:click={() => pickMonth(i)}>
+        <span
+          role="presentation"
+          class=" praecox-Calendar-month"
+          class:current-month={currentMonth == i && currentYear}
+        >
+          {item}
+        </span>
+      </td>
+    {/if}
+  {/each}
+</tr>
+<tr role="row">
+  {#each monthList as item, i}
+    {#if i >= 9 && i < 12}
+      <td role="gridcell" on:click={() => pickMonth(i)}>
+        <span
+          role="presentation"
+          class=" praecox-Calendar-month"
+          class:current-month={currentMonth == i && currentYear}
+        >
+          {item}
+        </span>
+      </td>
+    {/if}
+  {/each}
+</tr>
 
 <style>
   tr {
@@ -78,61 +141,3 @@
     );
   }
 </style>
-
-<tr role="row">
-  {#each monthList as item, i}
-    {#if i < 3}
-      <td role="gridcell" on:click={() => pickMonth(i)}>
-        <span
-          role="presentation"
-          class=" praecox-Calendar-month"
-          class:current-month={currentMonth == i && currentYear}>
-          {item}
-        </span>
-      </td>
-    {/if}
-  {/each}
-</tr>
-
-<tr role="row">
-  {#each monthList as item, i}
-    {#if i >= 3 && i < 6}
-      <td role="gridcell" on:click={() => pickMonth(i)}>
-        <span
-          role="presentation"
-          class=" praecox-Calendar-month"
-          class:current-month={currentMonth == i && currentYear}>
-          {item}
-        </span>
-      </td>
-    {/if}
-  {/each}
-</tr>
-<tr role="row">
-  {#each monthList as item, i}
-    {#if i >= 6 && i < 9}
-      <td role="gridcell" on:click={() => pickMonth(i)}>
-        <span
-          role="presentation"
-          class=" praecox-Calendar-month"
-          class:current-month={currentMonth == i && currentYear}>
-          {item}
-        </span>
-      </td>
-    {/if}
-  {/each}
-</tr>
-<tr role="row">
-  {#each monthList as item, i}
-    {#if i >= 9 && i < 12}
-      <td role="gridcell" on:click={() => pickMonth(i)}>
-        <span
-          role="presentation"
-          class=" praecox-Calendar-month"
-          class:current-month={currentMonth == i && currentYear}>
-          {item}
-        </span>
-      </td>
-    {/if}
-  {/each}
-</tr>
