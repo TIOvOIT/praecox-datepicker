@@ -8,7 +8,7 @@
     testLeapYear,
     testSolarMonthOf31Days,
     thisMonthHasManyWeek,
-    theDayOfTheWeek
+    theDayOfTheWeek,
   } from "./calendar.js";
   export {
     formatDatestamp,
@@ -19,7 +19,7 @@
     testLeapYear,
     testSolarMonthOf31Days,
     thisMonthHasManyWeek,
-    theDayOfTheWeek
+    theDayOfTheWeek,
   };
 </script>
 
@@ -29,7 +29,7 @@
   import CalendarHeader from "./Selector/Selector.svelte";
   import CalendarBody from "./body/CalendarBody.svelte";
   import "./fix-date.js";
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
 
@@ -107,6 +107,18 @@
    */
   export let pickerDone = false;
 
+  /**
+   * External function that get used to reload the disabled array on Next/Prev action
+   *
+   */
+  export let reloadDisabled;
+
+  /**
+   * Used to show/hide to the FinishBtn button
+   * @type { boolean }[finishBtn = true]
+   */
+  export let finishBtn = true;
+
   const praecoxCalendarData = writable({
     nowDate: [],
     viewDate: viewDate,
@@ -123,8 +135,18 @@
     selected: selected,
     focused: marked,
     pickerDone: pickerDone,
-    changed: changed
+    finishBtn: finishBtn,
+    changed: changed,
+    reloadDisabled: () => {
+      if (typeof reloadDisabled == "function") {
+        $praecoxCalendarData.disabled = reloadDisabled(
+          getThisMonthData($praecoxCalendarData.viewDate).flat()
+        );
+      }
+    },
   });
+
+  $praecoxCalendarData.reloadDisabled();
 
   setContext("praecoxCalendarData", praecoxCalendarData);
   let praecoxCalendarConfig = getContext("praecoxCalendarData");
@@ -135,11 +157,18 @@
     pickerDone = $praecoxCalendarConfig.pickerDone;
   });
 
-  $: if( $praecoxCalendarData.changed > changed ) {
+  $: if ($praecoxCalendarData.changed > changed) {
     changed = $praecoxCalendarData.changed;
-    dispatch('change', $praecoxCalendarData.selected);
+    dispatch("change", $praecoxCalendarData.selected);
   }
 </script>
+
+<div class="calendar calendar-{theme}">
+  <div class="calendar-wrap">
+    <CalendarHeader />
+    <CalendarBody />
+  </div>
+</div>
 
 <style>
   .calendar {
@@ -239,11 +268,3 @@
     );
   }
 </style>
-
-<div class="calendar calendar-{theme}">
-  <div class="calendar-wrap">
-    <CalendarHeader />
-    <CalendarBody />
-  </div>
-
-</div>

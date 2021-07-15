@@ -2,7 +2,7 @@
   import IconArrowForward from "../@icons/ArrowForward.svelte";
   import { getNextYearAndMonth } from "../calendar";
   import noun from "../i18n";
-  import { onMount, getContext } from "svelte";
+  import { getContext } from "svelte";
   let praecoxCalendar = getContext("praecoxCalendarData");
 
   function next() {
@@ -14,6 +14,7 @@
     switch ($praecoxCalendar.view) {
       case "month":
         $praecoxCalendar.viewDate = `${ny}-${nm}-${td}`;
+        $praecoxCalendar.reloadDisabled();
         break;
       case "year":
         $praecoxCalendar.viewDate = `${ty + 1}-${tm}-${td}`;
@@ -26,6 +27,16 @@
     $praecoxCalendar.flag = !$praecoxCalendar.flag;
   }
 </script>
+
+<div
+  class={"next-button"}
+  on:click={next}
+  title={noun[$praecoxCalendar.lang].nextName}
+>
+  <div class=" topButton">
+    <IconArrowForward />
+  </div>
+</div>
 
 <style>
   .next-button {
@@ -63,12 +74,3 @@
     margin: 0 auto;
   }
 </style>
-
-<div
-  class={'next-button'}
-  on:click={next}
-  title={noun[$praecoxCalendar.lang].nextName}>
-  <div class=" topButton">
-    <IconArrowForward />
-  </div>
-</div>

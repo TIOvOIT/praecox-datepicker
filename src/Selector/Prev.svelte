@@ -2,7 +2,7 @@
   import IconArrowBack from "../@icons/ArrowBack.svelte";
   import { getPrevYearAndMonth } from "../calendar";
   import noun from "../i18n";
-  import { onMount, getContext } from "svelte";
+  import { getContext } from "svelte";
   let praecoxCalendar = getContext("praecoxCalendarData");
   function prev() {
     let nd = new Date($praecoxCalendar.viewDate);
@@ -13,6 +13,7 @@
     switch ($praecoxCalendar.view) {
       case "month":
         $praecoxCalendar.viewDate = `${py}-${pm}-${td}`;
+        $praecoxCalendar.reloadDisabled();
         break;
       case "year":
         $praecoxCalendar.viewDate = `${ty - 1}-${tm}-${td}`;
@@ -26,6 +27,16 @@
     $praecoxCalendar.flag = !$praecoxCalendar.flag;
   }
 </script>
+
+<div
+  class={"prev-button"}
+  on:click={prev}
+  title={noun[$praecoxCalendar.lang].prevName}
+>
+  <div class="topButton">
+    <IconArrowBack />
+  </div>
+</div>
 
 <style>
   .prev-button {
@@ -63,12 +74,3 @@
     margin: 0 auto;
   }
 </style>
-
-<div
-  class={'prev-button'}
-  on:click={prev}
-  title={noun[$praecoxCalendar.lang].prevName}>
-  <div class="topButton">
-    <IconArrowBack />
-  </div>
-</div>
