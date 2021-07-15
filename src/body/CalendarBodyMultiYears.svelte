@@ -1,6 +1,5 @@
 <script>
   import { getContext, onMount } from "svelte";
-  import noun from "../i18n";
 
   let praecoxCalendar = getContext("praecoxCalendarData");
 
@@ -17,7 +16,6 @@
 
   function pickYear(i) {
     let d = new Date($praecoxCalendar.viewDate);
-    $praecoxCalendar.reloadDisabled();
     let tm = d.getMonth() + 1;
     let td = d.getDate();
     $praecoxCalendar.viewDate = `${i}-${tm}-${td}`;

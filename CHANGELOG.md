@@ -1,3 +1,8 @@
+## 1.1.3
+
+* There are many problems with reloadDisabled prop, temporarily disable it
+
+
 ## 1.1.1
 
 * Fix the issues of reloadDisabled prop when selecting year or month view to jump

@@ -13,10 +13,11 @@
 
   function pickMonth(i) {
     let d = new Date($praecoxCalendar.viewDate);
-    $praecoxCalendar.reloadDisabled();
+
     let ty = d.getFullYear();
     let td = d.getDate();
     $praecoxCalendar.viewDate = `${ty}-${i + 1}-${td}`;
+    $praecoxCalendar.reloadDisabled();
     $praecoxCalendar.view = "month";
   }
 </script>
