@@ -3,6 +3,9 @@
   import Prev from "./Prev.svelte";
   import Next from "./Next.svelte";
   import FinishBtn from "./FinishBtn.svelte";
+  import { getContext } from "svelte";
+
+  let praecoxCalendarData = getContext("praecoxCalendarData");
 </script>
 
 <style>
@@ -20,10 +23,19 @@
 </style>
 
 <div class="header">
-  <MonthTitle />
-  <Prev />
-  <Next />
+  {#if $praecoxCalendarData.finishBtn }
 
-  <FinishBtn />
+    <MonthTitle />
+    <Prev />
+    <Next />
 
+    <FinishBtn />
+
+  {:else}
+
+    <Prev />
+    <MonthTitle />
+    <Next />
+
+  {/if}
 </div>

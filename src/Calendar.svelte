@@ -107,6 +107,12 @@
    */
   export let pickerDone = false;
 
+  /**
+   * Used to show/hide to the FinishBtn button
+   * @type { boolean }[finishBtn = true]
+   */
+  export let finishBtn = true;
+
   const praecoxCalendarData = writable({
     nowDate: [],
     viewDate: viewDate,
@@ -123,7 +129,8 @@
     selected: selected,
     focused: marked,
     pickerDone: pickerDone,
-    changed: changed
+    changed: changed,
+    finishBtn: finishBtn
   });
 
   setContext("praecoxCalendarData", praecoxCalendarData);
