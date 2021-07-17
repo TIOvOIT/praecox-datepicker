@@ -24,6 +24,8 @@
           ) {
             return true;
           }
+        } else if( arrItem instanceof Date && arrItem.getTime() == thisDate ) {
+            return true;
         } else {
           for (let i = 0; i < arrItem.length; i++) {
             if (new Date(arrItem[i]).getTime() == thisDate) {

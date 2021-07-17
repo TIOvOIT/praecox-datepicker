@@ -111,7 +111,7 @@
    * External function that get used to reload the disabled array on Next/Prev action
    *
    */
-  let reloadDisabled = undefined;
+  export let reloadDisabled = undefined;
 
   /**
    * Used to show/hide to the FinishBtn button
