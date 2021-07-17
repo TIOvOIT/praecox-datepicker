@@ -1,5 +1,9 @@
 ## 1.1.3
 
+* Now resume the use of reloadDisabled prop
+
+## 1.1.3
+
 * There are many problems with reloadDisabled prop, temporarily disable it
 
 

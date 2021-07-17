@@ -24,8 +24,8 @@
           ) {
             return true;
           }
-        } else if( arrItem instanceof Date && arrItem.getTime() == thisDate ) {
-            return true;
+        } else if (arrItem instanceof Date && arrItem.getTime() == thisDate) {
+          return true;
         } else {
           for (let i = 0; i < arrItem.length; i++) {
             if (new Date(arrItem[i]).getTime() == thisDate) {
@@ -53,8 +53,6 @@
       }
     }
   }
-
-  function testHasDate(_arr, _day) {}
 
   function testFreeSelected(i) {
     if ($praecoxCalendar.pickerMode == "free" && $praecoxCalendar.selected) {
@@ -86,6 +84,17 @@
   }
 </script>
 
+<tr role="row">
+  {#each week as item}
+    <CalendarBodyDay
+      day={item}
+      isFreeSelected={testFreeSelected(item)}
+      isFocused={testMarked(item)}
+      disabled={filterDate($praecoxCalendar.disabled, item)}
+    />
+  {/each}
+</tr>
+
 <style>
   tr {
     margin: 0;
@@ -98,13 +107,3 @@
     );
   }
 </style>
-
-<tr role="row">
-  {#each week as item}
-    <CalendarBodyDay
-      day={item}
-      isFreeSelected={testFreeSelected(item)}
-      isFocused={testMarked(item)}
-      disabled={filterDate($praecoxCalendar.disabled, item)} />
-  {/each}
-</tr>
