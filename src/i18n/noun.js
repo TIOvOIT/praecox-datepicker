@@ -154,4 +154,28 @@ export default {
   prevName: "Προηγ.",
   nextName:"Επόμ."
   },
+  ro: {
+    weekShortAbbreviation: ["L", "M", "M", "J", "V", "S", "D"],
+    weekAbbreviation: ["Lun", "Mar", "Mie", "Joi", "Vin", "Sam", "Dum"],
+    weekFullName: ["Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata", "Duminica"],
+    monthAbbreviation: ["Ian", "Feb", "Mar", "Apr", "Mai", "Iun", "Iul", "Aug", "Sep", "Oct", "Noi", "Dec"],
+    monthFullName: [
+      "Ianuarie",
+      "Februarie",
+      "Martie",
+      "Aprilie",
+      "Mai",
+      "Iunie",
+      "Iulie",
+      "August",
+      "Septembrie",
+      "Octombrie",
+      "Noiembrie",
+      "Decembrie",
+    ],
+    today: "Astazi",
+    doneName: "Terminat",
+    prevName: "Precedent",
+    nextName:"Urmator"
+  },
 };
