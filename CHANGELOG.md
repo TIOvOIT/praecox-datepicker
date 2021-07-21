@@ -1,4 +1,8 @@
-## 1.1.3
+## 1.1.6
+
+* Add Romanian language support
+
+## 1.1.4
 
 * Now resume the use of reloadDisabled prop
 
