@@ -175,11 +175,11 @@ export function getFirstWeekOfTheMonth(n) {
   let i = 8 - dotw;
   let times = dotw - 2;
   for (let index = 0; index < firstWeekList.length; index++) {
-    firstWeekList[index] = new Date(`${py == ty ? ty : ty - 1}-${tm == 1 ? 12 : tm - 1}-${pmd - times}`);
+    firstWeekList[index] = new Date(py == ty ? ty : ty - 1, tm == 1 ? 11 : tm, pmd - times);
     times--;
   }
   for (let j = 0; j < i; j++) {
-    firstWeekList[7 - i + j] = new Date(`${ty}-${tm}-${j + 1}`);
+    firstWeekList[7 - i + j] = new Date(ty, tm - 1, j + 1);
   }
   return firstWeekList;
 }
@@ -222,10 +222,10 @@ export function getLastWeekOfTheMonth(n) {
   let cmd = testDaysInTheMonth(ty, tm);
   let times = cmd - d + 1;
   for (let index = 0; index < times; index++) {
-    lastWeekList[index] = new Date(`${ty}-${tm}-${d + index}`);
+    lastWeekList[index] = new Date(ty, tm - 1, d + index);
   }
   for (let index = 0; index < 7 - times; index++) {
-    lastWeekList[+times + index] = new Date(`${ny == ty ? ty : ty + 1}-${nm == 1 ? 1 : tm + 1}-${index + 1}`);
+    lastWeekList[+times + index] = new Date(ny == ty ? ty : ty + 1, nm == 1 ? 0 : tm, index + 1);
   }
   lastWeekList.length = 7;
   return lastWeekList;
