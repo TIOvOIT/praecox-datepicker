@@ -29,7 +29,7 @@
       var(
           --praecox-calendar-custom-inner-height,
           var(--praecox-calendar-inner-height)
-        ) / 6
+        ) / 7
     );
     align-items: center;
     justify-content: center;
