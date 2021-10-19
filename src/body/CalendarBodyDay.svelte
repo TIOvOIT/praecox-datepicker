@@ -124,7 +124,7 @@
       var(
           --praecox-calendar-custom-inner-height,
           var(--praecox-calendar-inner-height)
-        ) / 6
+        ) / 7
     );
     width: calc(
       var(
@@ -168,7 +168,7 @@
       var(
           --praecox-calendar-custom-inner-height,
           var(--praecox-calendar-inner-height)
-        ) / 6
+        ) / 7
     );
     width: calc(
       var(
@@ -180,7 +180,7 @@
       var(
           --praecox-calendar-custom-inner-height,
           var(--praecox-calendar-inner-height)
-        ) / 6
+        ) / 7
     );
     cursor: pointer;
     user-select: none;
