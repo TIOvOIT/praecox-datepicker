@@ -10,25 +10,25 @@
     if (!arr) {
       return;
     }
-    let thisDate = new Date(day).getTime();
+    let thisDate = setTimeToZero(new Date(day)).getTime();
     if (typeof arr[0] === "object") {
       for (let index = 0; index < arr.length; index++) {
         let arrItem = arr[index];
         if (
           arrItem.length === 2 &&
-          new Date(arrItem[0]).getTime() < new Date(arrItem[1]).getTime()
+          setTimeToZero(new Date(arrItem[0])).getTime() < setTimeToZero(new Date(arrItem[1])).getTime()
         ) {
           if (
-            thisDate >= new Date(arrItem[0]).getTime() &&
-            thisDate <= new Date(arrItem[1]).getTime()
+            thisDate >= setTimeToZero(new Date(arrItem[0])).getTime() &&
+            thisDate <= setTimeToZero(new Date(arrItem[1])).getTime()
           ) {
             return true;
           }
-        } else if (arrItem instanceof Date && arrItem.getTime() == thisDate) {
+        } else if (arrItem instanceof Date && setTimeToZero(arrItem).getTime() == thisDate) {
           return true;
         } else {
           for (let i = 0; i < arrItem.length; i++) {
-            if (new Date(arrItem[i]).getTime() == thisDate) {
+            if (setTimeToZero(new Date(arrItem[i])).getTime() == thisDate) {
               return true;
             }
           }
@@ -37,17 +37,17 @@
     } else {
       if (
         arr.length === 2 &&
-        new Date(arr[0]).getTime() < new Date(arr[1]).getTime()
+        setTimeToZero(new Date(arr[0])).getTime() < setTimeToZero(new Date(arr[1])).getTime()
       ) {
         if (
-          thisDate >= new Date(arr[0]).getTime() &&
-          thisDate <= new Date(arr[1]).getTime()
+          thisDate >= setTimeToZero(new Date(arr[0])).getTime() &&
+          thisDate <= setTimeToZero(new Date(arr[1])).getTime()
         ) {
           return true;
         }
       }
       for (let index = 0; index < arr.length; index++) {
-        if (new Date(arr[index]).getTime() == thisDate) {
+        if (setTimeToZero(new Date(arr[index])).getTime() == thisDate) {
           return true;
         }
       }
@@ -75,12 +75,16 @@
   }
 
   function formatDateArray(arr) {
-    let narr = [];
+    return arr.map(date => setTimeToZero(date).getTime());
+  }
 
-    for (let index = 0; index < arr.length; index++) {
-      narr[index] = new Date(arr[index]).getTime();
-    }
-    return narr;
+  function setTimeToZero(date) {
+    const d = new Date(date);
+    d.setHours(0);
+    d.setMinutes(0);
+    d.setSeconds(0);
+    d.setMilliseconds(0);
+    return d;
   }
 </script>
 
